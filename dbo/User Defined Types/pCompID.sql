@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pCompID]
+    FROM CHAR (3) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pCompID] TO PUBLIC;
+

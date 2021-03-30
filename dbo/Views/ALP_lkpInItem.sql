@@ -1,0 +1,1 @@
+﻿CREATE VIEW dbo.ALP_lkpInItem AS SELECT ItemId, Descr, TaxClass FROM ALP_tblInItem_view

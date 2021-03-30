@@ -1,0 +1,1 @@
+﻿CREATE VIEW dbo.ALP_lkpSmPeriodConversion AS SELECT * FROM dbo.ALP_tblSmPeriodConversion_view

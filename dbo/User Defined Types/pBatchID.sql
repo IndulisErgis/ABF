@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pBatchID]
+    FROM VARCHAR (6) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pBatchID] TO PUBLIC;
+

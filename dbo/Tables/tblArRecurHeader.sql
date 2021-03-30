@@ -1,0 +1,67 @@
+﻿CREATE TABLE [dbo].[tblArRecurHeader] (
+    [RecurId]          VARCHAR (8)        NOT NULL,
+    [RunCode]          VARCHAR (6)        NOT NULL,
+    [RecurType]        TINYINT            CONSTRAINT [DF_tblArRecurHeader_RecurType] DEFAULT ((0)) NOT NULL,
+    [StartingDate]     DATETIME           NULL,
+    [EndingDate]       DATETIME           NULL,
+    [LocId]            [dbo].[pLocID]     NULL,
+    [CurrencyId]       [dbo].[pCurrency]  NULL,
+    [CustId]           [dbo].[pCustID]    NOT NULL,
+    [SoldToId]         [dbo].[pCustID]    NULL,
+    [CustLevel]        VARCHAR (10)       NULL,
+    [ShipToId]         [dbo].[pCustID]    NULL,
+    [ShipToName]       VARCHAR (30)       NULL,
+    [ShipToAddr1]      VARCHAR (30)       NULL,
+    [ShipToAddr2]      VARCHAR (60)       NULL,
+    [ShipToCity]       VARCHAR (30)       NULL,
+    [ShipToRegion]     VARCHAR (10)       NULL,
+    [ShipToCountry]    [dbo].[pCountry]   NULL,
+    [ShipToPostalCode] VARCHAR (10)       NULL,
+    [ShipNum]          NVARCHAR (30)      NULL,
+    [ShipVia]          VARCHAR (20)       NULL,
+    [TermsCode]        [dbo].[pTermsCode] NOT NULL,
+    [DistCode]         [dbo].[pDistCode]  NOT NULL,
+    [TaxableYN]        BIT                CONSTRAINT [DF_tblArRecurHeader_TaxableYN] DEFAULT ((1)) NOT NULL,
+    [PoDate]           DATETIME           NULL,
+    [CustPoNum]        VARCHAR (25)       NULL,
+    [Rep1Id]           [dbo].[pSalesRep]  NULL,
+    [Rep1Pct]          [dbo].[pDec]       CONSTRAINT [DF_tblArRecurHeader_Rep1Pct] DEFAULT ((0)) NOT NULL,
+    [Rep2Id]           [dbo].[pSalesRep]  NULL,
+    [Rep2Pct]          [dbo].[pDec]       CONSTRAINT [DF_tblArRecurHeader_Rep2Pct] DEFAULT ((0)) NOT NULL,
+    [TaxClassFreight]  TINYINT            CONSTRAINT [DF_tblArRecurHeader_TaxClassFreight] DEFAULT ((0)) NOT NULL,
+    [TaxGrpId]         [dbo].[pTaxLoc]    NOT NULL,
+    [TaxClassMisc]     TINYINT            CONSTRAINT [DF_tblArRecurHeader_TaxClassMisc] DEFAULT ((0)) NOT NULL,
+    [Freight]          [dbo].[pDec]       CONSTRAINT [DF_tblArRecurHeader_Freight] DEFAULT ((0)) NOT NULL,
+    [Misc]             [dbo].[pDec]       CONSTRAINT [DF_tblArRecurHeader_Misc] DEFAULT ((0)) NOT NULL,
+    [TaxAmtAdj]        [dbo].[pDec]       CONSTRAINT [DF_tblArRecurHeader_TaxAmtAdj] DEFAULT ((0)) NOT NULL,
+    [TaxAdj]           TINYINT            CONSTRAINT [DF_tblArRecurHeader_TaxAdj] DEFAULT ((1)) NOT NULL,
+    [TaxLocAdj]        [dbo].[pTaxLoc]    NULL,
+    [TaxClassAdj]      TINYINT            CONSTRAINT [DF_tblArRecurHeader_TaxClassAdj] DEFAULT ((0)) NOT NULL,
+    [BillType]         TINYINT            CONSTRAINT [DF_tblArRecurHeader_BillType] DEFAULT ((0)) NOT NULL,
+    [BillInterval]     INT                CONSTRAINT [DF_tblArRecurHeader_BillInterval] DEFAULT ((0)) NOT NULL,
+    [NextBillDate]     DATETIME           NULL,
+    [LastBillDate]     DATETIME           NULL,
+    [PmtMethodId]      VARCHAR (10)       NULL,
+    [CCNum]            NVARCHAR (255)     NULL,
+    [CCHolder]         VARCHAR (30)       NULL,
+    [CCExpire]         DATETIME           NULL,
+    [BankName]         VARCHAR (30)       NULL,
+    [BankAcctNum]      NVARCHAR (255)     NULL,
+    [BankRoutingCode]  VARCHAR (9)        NULL,
+    [CF]               XML                NULL,
+    [ts]               ROWVERSION         NULL,
+    [CCAuth]           VARCHAR (10)       NULL,
+    [ShipToAttn]       NVARCHAR (30)      NULL,
+    [ShipMethod]       NVARCHAR (6)       NULL,
+    [ExtPmtActivityID] BIGINT             NULL,
+    CONSTRAINT [PK_tblArRecurHeader] PRIMARY KEY CLUSTERED ([RecurId] ASC)
+);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Version', @value = '11.0.19137.3213', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblArRecurHeader';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Comment', @value = 'Build 19137', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblArRecurHeader';
+

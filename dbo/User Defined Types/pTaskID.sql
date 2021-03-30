@@ -1,0 +1,3 @@
+﻿CREATE TYPE [dbo].[pTaskID]
+    FROM VARCHAR (10) NULL;
+

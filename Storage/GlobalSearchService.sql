@@ -1,0 +1,4 @@
+﻿CREATE FULLTEXT CATALOG [GlobalSearchService]
+    WITH ACCENT_SENSITIVITY = ON
+    AUTHORIZATION [traverse];
+

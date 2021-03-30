@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pItemID]
+    FROM VARCHAR (24) NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pItemID] TO PUBLIC;
+

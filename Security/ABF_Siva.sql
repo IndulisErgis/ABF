@@ -1,0 +1,2 @@
+﻿CREATE USER [ABF\Siva] FOR LOGIN [ABF\Siva];
+

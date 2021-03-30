@@ -1,0 +1,65 @@
+﻿CREATE TABLE [dbo].[tblPaSubmitter] (
+    [Counter]            INT           IDENTITY (1, 1) NOT NULL,
+    [FedEIN]             NVARCHAR (10) NULL,
+    [CompName]           NVARCHAR (57) NULL,
+    [Addr1]              NVARCHAR (22) NULL,
+    [Addr2]              NVARCHAR (22) NULL,
+    [City]               NVARCHAR (30) NULL,
+    [State]              NVARCHAR (23) NULL,
+    [Zip]                NVARCHAR (15) NULL,
+    [CountryCode]        NVARCHAR (4)  NULL,
+    [PinNumber]          NVARCHAR (17) NULL,
+    [chkResubFlag]       BIT           CONSTRAINT [DF_tblPaSubmitter_chkResubFlag] DEFAULT ((0)) NOT NULL,
+    [WFID]               NVARCHAR (6)  NULL,
+    [PreparerCode]       NVARCHAR (1)  NULL,
+    [SoftwareCode]       NVARCHAR (2)  NULL,
+    [chkForeign]         BIT           CONSTRAINT [DF_tblPaSubmitter_chkForeign] DEFAULT ((0)) NOT NULL,
+    [SubCompName]        NVARCHAR (57) NULL,
+    [SubAddr1]           NVARCHAR (22) NULL,
+    [SubAddr2]           NVARCHAR (22) NULL,
+    [SubCity]            NVARCHAR (30) NULL,
+    [SubState]           NVARCHAR (23) NULL,
+    [SubZip]             NVARCHAR (15) NULL,
+    [SubCountryCode]     NVARCHAR (4)  NULL,
+    [EMail]              NVARCHAR (40) NULL,
+    [Notification]       NVARCHAR (1)  NULL,
+    [AgentIndCode]       NVARCHAR (1)  NULL,
+    [EmplAgentEIN]       NVARCHAR (10) NULL,
+    [AgentForEIN]        NVARCHAR (9)  NULL,
+    [ERCompName]         NVARCHAR (57) NULL,
+    [ERAddr1]            NVARCHAR (22) NULL,
+    [ERAddr2]            NVARCHAR (22) NULL,
+    [ERCity]             NVARCHAR (30) NULL,
+    [ERState]            NVARCHAR (23) NULL,
+    [ERZip]              NVARCHAR (15) NULL,
+    [ERCountryCode]      NVARCHAR (4)  NULL,
+    [TaxJurisCode]       NVARCHAR (1)  NULL,
+    [PRU]                NVARCHAR (4)  NULL,
+    [OtherEIN]           NVARCHAR (9)  NULL,
+    [Type]               NVARCHAR (1)  NULL,
+    [chkTerminBusin]     BIT           CONSTRAINT [DF_tblPaSubmitter_chkTerminBusin] DEFAULT ((0)) NOT NULL,
+    [chkThirdPartySP]    BIT           CONSTRAINT [DF_tblPaSubmitter_chkThirdPartySP] DEFAULT ((0)) NOT NULL,
+    [ThirdPartyWithheld] [dbo].[pDec]  CONSTRAINT [DF_tblPaSubmitter_ThirdPartyWithheld] DEFAULT ((0)) NOT NULL,
+    [ReportPeriod]       NVARCHAR (6)  NULL,
+    [ContactName]        NVARCHAR (27) NULL,
+    [ContacPhone]        NVARCHAR (15) NULL,
+    [Extension]          NVARCHAR (5)  NULL,
+    [fax]                NVARCHAR (10) NULL,
+    [EmployerType]       TINYINT       CONSTRAINT [DF_tblPaSubmitter_EmployerType] DEFAULT ((0)) NOT NULL,
+    [ts]                 ROWVERSION    NULL,
+    [ERContactName]      NVARCHAR (27) NULL,
+    [ERContacPhone]      NVARCHAR (15) NULL,
+    [ERExtension]        NVARCHAR (5)  NULL,
+    [ERFax]              NVARCHAR (10) NULL,
+    [EREMail]            NVARCHAR (40) NULL,
+    CONSTRAINT [PK_tblPaSubmitter] PRIMARY KEY CLUSTERED ([Counter] ASC)
+);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Version', @value = '11.0.19137.3213', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblPaSubmitter';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Comment', @value = 'Build 19137', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblPaSubmitter';
+

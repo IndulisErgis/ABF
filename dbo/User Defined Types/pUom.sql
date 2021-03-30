@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pUom]
+    FROM VARCHAR (5) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pUom] TO PUBLIC;
+

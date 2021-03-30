@@ -1,0 +1,93 @@
+﻿CREATE TABLE [dbo].[tblPoTransHeader] (
+    [TransId]             [dbo].[pTransID]   NOT NULL,
+    [BatchId]             [dbo].[pBatchID]   CONSTRAINT [DF__tblPoTran__Batch__103B37AA] DEFAULT ('######') NOT NULL,
+    [TransType]           SMALLINT           CONSTRAINT [DF__tblPoTran__Trans__112F5BE3] DEFAULT (9) NULL,
+    [LocId]               [dbo].[pLocID]     NULL,
+    [VendorId]            [dbo].[pVendorID]  NULL,
+    [Notes]               TEXT               NULL,
+    [DistCode]            [dbo].[pDistCode]  NULL,
+    [TermsCode]           [dbo].[pTermsCode] NULL,
+    [TransDate]           DATETIME           CONSTRAINT [DF__tblPoTran__Trans__1223801C] DEFAULT (getdate()) NULL,
+    [TaxGrpID]            [dbo].[pTaxLoc]    NULL,
+    [TaxableYn]           BIT                CONSTRAINT [DF__tblPoTran__Taxab__1317A455] DEFAULT (1) NULL,
+    [PrintStatus]         TINYINT            CONSTRAINT [DF__tblPoTran__Print__140BC88E] DEFAULT (0) NULL,
+    [PrintDate]           DATETIME           NULL,
+    [ReqShipDate]         DATETIME           CONSTRAINT [DF__tblPoTran__ReqSh__14FFECC7] DEFAULT (getdate()) NULL,
+    [OrderedBy]           [dbo].[pUserID]    NULL,
+    [ReceivedBy]          [dbo].[pUserID]    NULL,
+    [FOB]                 VARCHAR (35)       NULL,
+    [CurrencyID]          [dbo].[pCurrency]  NOT NULL,
+    [ExchRate]            [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__ExchR__15F41100] DEFAULT (1) NULL,
+    [ShipToID]            [dbo].[pCustID]    NULL,
+    [ShipToAttn]          VARCHAR (30)       NULL,
+    [ShipToName]          VARCHAR (30)       NULL,
+    [ShipToAddr1]         VARCHAR (30)       NULL,
+    [ShipToAddr2]         VARCHAR (60)       NULL,
+    [ShipToCity]          VARCHAR (30)       NULL,
+    [ShipToRegion]        VARCHAR (10)       NULL,
+    [ShipToCountry]       [dbo].[pCountry]   NULL,
+    [ShipToPostalCode]    VARCHAR (10)       NULL,
+    [ShipVia]             VARCHAR (20)       NULL,
+    [MemoTaxable]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__16E83539] DEFAULT (0) NULL,
+    [MemoNonTaxable]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoN__17DC5972] DEFAULT (0) NULL,
+    [MemoSalesTax]        [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoS__18D07DAB] DEFAULT (0) NULL,
+    [MemoFreight]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoF__19C4A1E4] DEFAULT (0) NULL,
+    [MemoMisc]            [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoM__1AB8C61D] DEFAULT (0) NULL,
+    [MemoDisc]            [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoD__1BACEA56] DEFAULT (0) NULL,
+    [MemoPrepaid]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoP__1CA10E8F] DEFAULT (0) NULL,
+    [CheckDate]           DATETIME           NULL,
+    [MemoTaxableFgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__1D9532C8] DEFAULT (0) NULL,
+    [MemoNonTaxableFgn]   [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoN__1E895701] DEFAULT (0) NULL,
+    [MemoSalesTaxFgn]     [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoS__1F7D7B3A] DEFAULT (0) NULL,
+    [MemoFreightFgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoF__20719F73] DEFAULT (0) NULL,
+    [MemoMiscFgn]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoM__2165C3AC] DEFAULT (0) NULL,
+    [MemoDiscFgn]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoD__2259E7E5] DEFAULT (0) NULL,
+    [MemoPrepaidFgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoP__234E0C1E] DEFAULT (0) NULL,
+    [MemoCheckNo]         [dbo].[pCheckNum]  NULL,
+    [MemoDueDate1]        DATETIME           NULL,
+    [MemoDueDate2]        DATETIME           NULL,
+    [MemoDueDate3]        DATETIME           NULL,
+    [MemoPmtAmt1]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoP__24423057] DEFAULT (0) NULL,
+    [MemoPmtAmt2]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoP__25365490] DEFAULT (0) NULL,
+    [MemoPmtAmt3]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoP__262A78C9] DEFAULT (0) NULL,
+    [MemoPmtAmt1Fgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoP__271E9D02] DEFAULT (0) NULL,
+    [MemoPmtAmt2Fgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoP__2812C13B] DEFAULT (0) NULL,
+    [MemoPmtAmt3Fgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoP__2906E574] DEFAULT (0) NULL,
+    [MemoTaxClassFreight] TINYINT            CONSTRAINT [DF__tblPoTran__MemoT__29FB09AD] DEFAULT (0) NULL,
+    [MemoTaxClassMisc]    TINYINT            CONSTRAINT [DF__tblPoTran__MemoT__2AEF2DE6] DEFAULT (0) NULL,
+    [MemoTaxLocID1]       [dbo].[pTaxLoc]    NULL,
+    [MemoTaxAmt1]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__2BE3521F] DEFAULT (0) NULL,
+    [MemoTaxAmt1Fgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__2CD77658] DEFAULT (0) NULL,
+    [MemoTaxLocID2]       [dbo].[pTaxLoc]    NULL,
+    [MemoTaxAmt2]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__2DCB9A91] DEFAULT (0) NULL,
+    [MemoTaxAmt2Fgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__2EBFBECA] DEFAULT (0) NULL,
+    [MemoTaxLocID3]       [dbo].[pTaxLoc]    NULL,
+    [MemoTaxAmt3]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__2FB3E303] DEFAULT (0) NULL,
+    [MemoTaxAmt3Fgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__30A8073C] DEFAULT (0) NULL,
+    [MemoTaxLocID4]       [dbo].[pTaxLoc]    NULL,
+    [MemoTaxAmt4]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__319C2B75] DEFAULT (0) NULL,
+    [MemoTaxAmt4Fgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__32904FAE] DEFAULT (0) NULL,
+    [MemoTaxLocID5]       [dbo].[pTaxLoc]    NULL,
+    [MemoTaxAmt5]         [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__338473E7] DEFAULT (0) NULL,
+    [MemoTaxAmt5Fgn]      [dbo].[pDec]       CONSTRAINT [DF__tblPoTran__MemoT__34789820] DEFAULT (0) NULL,
+    [ts]                  ROWVERSION         NULL,
+    [DropShipYn]          BIT                DEFAULT ((0)) NOT NULL,
+    [HdrRef]              INT                IDENTITY (1, 1) NOT NULL,
+    [CF]                  XML                NULL,
+    [ExpReceiptDate]      DATETIME           NULL,
+    CONSTRAINT [PK_tblPoTransHeader] PRIMARY KEY CLUSTERED ([TransId] ASC)
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [sqlBatchId]
+    ON [dbo].[tblPoTransHeader]([BatchId] ASC);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Version', @value = '11.0.19137.3213', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblPoTransHeader';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Comment', @value = 'Build 19137', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblPoTransHeader';
+

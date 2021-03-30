@@ -1,0 +1,2 @@
+﻿
+CREATE VIEW dbo.ALP_lkpJmSvcTktItemIdSM AS SELECT TOP 100 PERCENT ItemCode, [Desc], AlpDfltPts, AlpServiceType, GLAcctInv FROM dbo.ALP_tblSmItem_view WHERE (AlpServiceType = 1) OR (AlpServiceType = 2) ORDER BY ItemCode

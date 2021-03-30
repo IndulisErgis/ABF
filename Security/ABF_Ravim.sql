@@ -1,0 +1,2 @@
+﻿CREATE USER [ABF\Ravim] FOR LOGIN [ABF\Ravim];
+

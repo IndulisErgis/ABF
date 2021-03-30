@@ -1,0 +1,3 @@
+﻿CREATE PROCEDURE dbo.ALP_qryCSBS_GetOptions_sp
+AS
+SELECT * FROM ALP_tblCSOptions

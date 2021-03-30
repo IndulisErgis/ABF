@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pGLAcctCode]
+    FROM VARCHAR (2) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pGLAcctCode] TO PUBLIC;
+

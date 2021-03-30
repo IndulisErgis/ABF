@@ -1,0 +1,3 @@
+﻿CREATE TYPE [dbo].[pPhaseID]
+    FROM VARCHAR (10) NULL;
+

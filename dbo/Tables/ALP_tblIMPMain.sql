@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[ALP_tblIMPMain] (
+    [ImportMainId]       INT            IDENTITY (1, 1) NOT NULL,
+    [Source]             VARCHAR (30)   NULL,
+    [Source_Id]          VARCHAR (20)   NULL,
+    [Source_Desc]        VARCHAR (200)  NULL,
+    [ProjectId]          VARCHAR (10)   NULL,
+    [Source_Quote]       VARCHAR (50)   NULL,
+    [Source_System]      VARCHAR (200)  NULL,
+    [Source_QuoteDesc]   VARCHAR (200)  NULL,
+    [Source_PartCnt]     INT            NULL,
+    [Source_BillToAR]    NCHAR (10)     NULL,
+    [Source_BillToName]  VARCHAR (150)  NULL,
+    [Source_SiteName]    VARCHAR (200)  NULL,
+    [Source_SiteAddress] VARCHAR (500)  NULL,
+    [Source_Rep]         VARCHAR (50)   NULL,
+    [Source_QuoteAmount] [dbo].[pDec]   NULL,
+    [ImportDate]         DATETIME       NULL,
+    [Status]             INT            CONSTRAINT [DF_tmp_Alp_tblImportFromProject_IsProcessed] DEFAULT ((0)) NULL,
+    [IsValidate]         BIT            NULL,
+    [ValidatedBy]        VARBINARY (50) NULL,
+    [ValidatedDate]      DATETIME       NULL,
+    [CreatedBy]          VARCHAR (50)   NOT NULL,
+    [CreatedDate]        DATETIME       NOT NULL,
+    [ts]                 ROWVERSION     NULL,
+    [ImportProjectId]    INT            NULL,
+    CONSTRAINT [PK_Alp_tblIMPMain] PRIMARY KEY CLUSTERED ([ImportMainId] ASC)
+);
+

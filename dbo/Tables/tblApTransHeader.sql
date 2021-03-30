@@ -1,0 +1,93 @@
+﻿CREATE TABLE [dbo].[tblApTransHeader] (
+    [TransId]         [dbo].[pTransID]    NOT NULL,
+    [BatchId]         [dbo].[pBatchID]    CONSTRAINT [DF__tblApTran__Batch__2C42797B] DEFAULT ('######') NOT NULL,
+    [WhseId]          [dbo].[pLocID]      NULL,
+    [VendorId]        [dbo].[pVendorID]   NULL,
+    [InvoiceNum]      [dbo].[pInvoiceNum] NULL,
+    [InvoiceDate]     DATETIME            CONSTRAINT [DF__tblApTran__Invoi__2D369DB4] DEFAULT (getdate()) NULL,
+    [TransType]       SMALLINT            CONSTRAINT [DF__tblApTran__Trans__2E2AC1ED] DEFAULT (1) NULL,
+    [PONum]           VARCHAR (25)        NULL,
+    [DistCode]        [dbo].[pDistCode]   NOT NULL,
+    [TermsCode]       [dbo].[pTermsCode]  NOT NULL,
+    [DueDate1]        DATETIME            NULL,
+    [DueDate2]        DATETIME            NULL,
+    [DueDate3]        DATETIME            NULL,
+    [PmtAmt1]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__PmtAm__2F1EE626] DEFAULT (0) NULL,
+    [PmtAmt2]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__PmtAm__30130A5F] DEFAULT (0) NULL,
+    [PmtAmt3]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__PmtAm__31072E98] DEFAULT (0) NULL,
+    [Subtotal]        [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Subto__31FB52D1] DEFAULT (0) NULL,
+    [SalesTax]        [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Sales__32EF770A] DEFAULT (0) NULL,
+    [Freight]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Freig__33E39B43] DEFAULT (0) NULL,
+    [Misc]            [dbo].[pDec]        CONSTRAINT [DF__tblApTrans__Misc__34D7BF7C] DEFAULT (0) NULL,
+    [CashDisc]        [dbo].[pDec]        CONSTRAINT [DF__tblApTran__CashD__35CBE3B5] DEFAULT (0) NULL,
+    [PrepaidAmt]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Prepa__36C007EE] DEFAULT (0) NULL,
+    [CurrencyId]      [dbo].[pCurrency]   NOT NULL,
+    [ExchRate]        [dbo].[pDec]        CONSTRAINT [DF__tblApTran__ExchR__37B42C27] DEFAULT (1) NULL,
+    [PmtAmt1Fgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__PmtAm__38A85060] DEFAULT (0) NULL,
+    [PmtAmt2Fgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__PmtAm__399C7499] DEFAULT (0) NULL,
+    [PmtAmt3Fgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__PmtAm__3A9098D2] DEFAULT (0) NULL,
+    [SubtotalFgn]     [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Subto__3B84BD0B] DEFAULT (0) NULL,
+    [SalesTaxFgn]     [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Sales__3C78E144] DEFAULT (0) NULL,
+    [FreightFgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Freig__3D6D057D] DEFAULT (0) NULL,
+    [MiscFgn]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__MiscF__3E6129B6] DEFAULT (0) NULL,
+    [CashDiscFgn]     [dbo].[pDec]        CONSTRAINT [DF__tblApTran__CashD__3F554DEF] DEFAULT (0) NULL,
+    [PrepaidAmtFgn]   [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Prepa__40497228] DEFAULT (0) NULL,
+    [CheckNum]        [dbo].[pCheckNum]   NULL,
+    [CheckDate]       DATETIME            NULL,
+    [PostDate]        DATETIME            NULL,
+    [GLPeriod]        SMALLINT            CONSTRAINT [DF__tblApTran__GLPer__413D9661] DEFAULT (0) NULL,
+    [FiscalYear]      SMALLINT            CONSTRAINT [DF__tblApTran__Fisca__4231BA9A] DEFAULT (0) NULL,
+    [Ten99InvoiceYN]  BIT                 NULL,
+    [Status]          TINYINT             CONSTRAINT [DF__tblApTran__Statu__4325DED3] DEFAULT (0) NULL,
+    [Notes]           TEXT                NULL,
+    [TaxGrpID]        [dbo].[pTaxLoc]     NOT NULL,
+    [TaxableYn]       BIT                 CONSTRAINT [DF__tblApTran__Taxab__441A030C] DEFAULT (1) NULL,
+    [Taxable]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Taxab__450E2745] DEFAULT (0) NULL,
+    [NonTaxable]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__NonTa__46024B7E] DEFAULT (0) NULL,
+    [TaxableFgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__Taxab__46F66FB7] DEFAULT (0) NULL,
+    [NonTaxableFgn]   [dbo].[pDec]        CONSTRAINT [DF__tblApTran__NonTa__47EA93F0] DEFAULT (0) NULL,
+    [TaxClassFreight] TINYINT             CONSTRAINT [DF__tblApTran__TaxCl__48DEB829] DEFAULT (0) NULL,
+    [TaxClassMisc]    TINYINT             CONSTRAINT [DF__tblApTran__TaxCl__49D2DC62] DEFAULT (0) NULL,
+    [TaxLocID1]       [dbo].[pTaxLoc]     NULL,
+    [TaxAmt1]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__4AC7009B] DEFAULT (0) NULL,
+    [TaxAmt1Fgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__4BBB24D4] DEFAULT (0) NULL,
+    [TaxLocID2]       [dbo].[pTaxLoc]     NULL,
+    [TaxAmt2]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__4CAF490D] DEFAULT (0) NULL,
+    [TaxAmt2Fgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__4DA36D46] DEFAULT (0) NULL,
+    [TaxLocID3]       [dbo].[pTaxLoc]     NULL,
+    [TaxAmt3]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__4E97917F] DEFAULT (0) NULL,
+    [TaxAmt3Fgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__4F8BB5B8] DEFAULT (0) NULL,
+    [TaxLocID4]       [dbo].[pTaxLoc]     NULL,
+    [TaxAmt4]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__507FD9F1] DEFAULT (0) NULL,
+    [TaxAmt4Fgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__5173FE2A] DEFAULT (0) NULL,
+    [TaxLocID5]       [dbo].[pTaxLoc]     NULL,
+    [TaxAmt5]         [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__52682263] DEFAULT (0) NULL,
+    [TaxAmt5Fgn]      [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAm__535C469C] DEFAULT (0) NULL,
+    [TaxAdjClass]     TINYINT             CONSTRAINT [DF__tblApTran__TaxAd__54506AD5] DEFAULT (0) NULL,
+    [TaxAdjLocID]     [dbo].[pTaxLoc]     NULL,
+    [TaxAdjAmt]       [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAd__55448F0E] DEFAULT (0) NULL,
+    [TaxAdjAmtFgn]    [dbo].[pDec]        CONSTRAINT [DF__tblApTran__TaxAd__5638B347] DEFAULT (0) NULL,
+    [ts]              ROWVERSION          NULL,
+    [BankID]          [dbo].[pBankID]     NULL,
+    [ChkGlPeriod]     SMALLINT            NULL,
+    [ChkFiscalYear]   SMALLINT            NULL,
+    [PmtCurrencyId]   [dbo].[pCurrency]   NULL,
+    [PmtExchRate]     [dbo].[pDec]        CONSTRAINT [DF_tmpGlTrans_PmtExchRate] DEFAULT ((1)) NOT NULL,
+    [DiscDueDate]     DATETIME            NULL,
+    [CF]              XML                 NULL,
+    CONSTRAINT [PK_tblApTransHeader] PRIMARY KEY CLUSTERED ([TransId] ASC)
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [sqlBatchId]
+    ON [dbo].[tblApTransHeader]([BatchId] ASC);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Version', @value = '11.0.19137.3213', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblApTransHeader';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Comment', @value = 'Build 19137', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblApTransHeader';
+

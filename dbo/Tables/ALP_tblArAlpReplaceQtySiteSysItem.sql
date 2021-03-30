@@ -1,0 +1,28 @@
+﻿CREATE TABLE [dbo].[ALP_tblArAlpReplaceQtySiteSysItem] (
+    [SysItemId]    INT              NOT NULL,
+    [SysId]        INT              NULL,
+    [ItemId]       VARCHAR (24)     NULL,
+    [Desc]         VARCHAR (255)    NULL,
+    [LocId]        VARCHAR (10)     NULL,
+    [PanelYN]      BIT              CONSTRAINT [DF_ALP_tblArAlpReplaceQtySiteSysItem_PanelYN] DEFAULT ((0)) NOT NULL,
+    [SerNum]       VARCHAR (35)     NULL,
+    [EquipLoc]     VARCHAR (30)     NULL,
+    [Qty]          FLOAT (53)       NULL,
+    [UnitCost]     NUMERIC (20, 10) NULL,
+    [WarrPlanId]   INT              NULL,
+    [WarrTerm]     SMALLINT         NULL,
+    [WarrStarts]   DATETIME         NULL,
+    [WarrExpires]  DATETIME         NULL,
+    [Comments]     TEXT             NULL,
+    [RemoveYN]     BIT              CONSTRAINT [DF_ALP_tblArAlpReplaceQtySiteSysItem_RemoveYN] DEFAULT ((0)) NOT NULL,
+    [Zone]         VARCHAR (5)      NULL,
+    [TicketId]     INT              NOT NULL,
+    [WorkOrderId]  INT              NULL,
+    [RepPlanId]    INT              NULL,
+    [LeaseYN]      BIT              CONSTRAINT [DF_ALP_tblArAlpReplaceQtySiteSysItem_LeaseYN] DEFAULT ((0)) NOT NULL,
+    [ts]           ROWVERSION       NULL,
+    [ModifiedBy]   VARCHAR (50)     NULL,
+    [ModifiedDate] DATETIME         NULL,
+    CONSTRAINT [PK_tblArAlpReplaceQtySiteSysItem] PRIMARY KEY CLUSTERED ([SysItemId] ASC, [TicketId] ASC)
+);
+

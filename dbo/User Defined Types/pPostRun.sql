@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pPostRun]
+    FROM VARCHAR (14) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pPostRun] TO PUBLIC;
+

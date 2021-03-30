@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pExt]
+    FROM DECIMAL (20, 10) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pExt] TO PUBLIC;
+

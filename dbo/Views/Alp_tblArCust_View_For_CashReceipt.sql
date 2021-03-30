@@ -1,0 +1,90 @@
+﻿CREATE VIEW [dbo].[Alp_tblArCust_View_For_CashReceipt]  
+AS  
+
+SELECT t.[AcctType]  
+, t.[Addr1]  
+, t.[Addr2]  
+, t.[AllowCharge]  
+, t.[Attn]  
+, t.[AutoCreditHold]  
+, t.[BalAge1]  
+, t.[BalAge2]  
+, t.[BalAge3]  
+, t.[BalAge4]  
+, t.[BillToId]  
+, t.[CalcFinch]  
+, t.[CcCompYn]  
+, t.[City]  
+, t.[ClassId]  
+, t.[Contact]  
+, t.[Country]  
+, t.[CreditHold]  
+, t.[CreditLimit]  
+, t.[CreditStatus]  
+, t.[CurAmtDue]  
+, t.[CurAmtDueFgn]  
+, t.[CurrencyId]  
+, t.[CustId]  
+, t.[CustLevel]  
+--, t.[CustName] 
+, CASE WHEN AlpFirstName IS NULL THEN CustName
+		WHEN AlpFirstName = '' THEN CustName
+	   WHEN AlpFirstName = ' ' THEN CustName
+	   ELSE CustName + ', ' + AlpFirstName
+		END as CustName
+, t.[DistCode]  
+, t.[Email]  
+, t.[Fax]  
+, t.[FirstSaleDate]  
+, t.[GroupCode]  
+, t.[HighBal]  
+, t.[Internet]  
+, t.[IntlPrefix]  
+, t.[LastPayAmt]  
+, t.[LastPayCheckNum]  
+, t.[LastPayDate]  
+, t.[LastSaleAmt]  
+, t.[LastSaleDate]  
+, t.[LastSaleInvc]  
+, t.[NewFinch]  
+, t.[PartialShip]  
+, t.[Phone]  
+, t.[Phone1]  
+, t.[Phone2]  
+, t.[PmtMethod]  
+, t.[PostalCode]  
+, t.[PriceCode]  
+, t.[Region]  
+, t.[Rep1PctInvc]  
+, t.[Rep2PctInvc]  
+, t.[SalesRepId1]  
+, t.[SalesRepId2]  
+, t.[ShipZone]  
+, t.[Status]  
+, t.[StmtInvcCode]  
+, t.[Taxable]  
+, t.[TaxExemptId]  
+, t.[TaxLocId]  
+, t.[TermsCode]  
+, t.[TerrId]  
+, t.[UnapplCredit]  
+, t.[UnpaidFinch]  
+, t.[WebDisplInQtyYn]   
+, e.[cf_File # ]  
+ FROM dbo.ALP_tblArCust_view t  
+ LEFT JOIN  
+ ( SELECT pvt.[CustId]  
+ , Cast(pvt.[File # ] As nvarchar(15)) AS [cf_File # ]  
+  FROM  
+   ( SELECT t.[CustId], [Name], [Value]  
+   FROM  
+    ( SELECT t.[CustId]  
+    , e.props.value('./Name[1]', 'NVARCHAR(max)') as [Name]  
+    , e.props.value('./Value[1]', 'NVARCHAR(max)') as [Value]  
+    FROM dbo.[tblArCust] t  
+    CROSS APPLY t.CF.nodes('/ArrayOfEntityPropertyOfString/EntityPropertyOfString') as e(props)  
+    WHERE (e.props.exist('Name') = 1) AND (e.props.exist('Value') = 1)  
+   ) t  
+  ) tmp  
+  PIVOT (Max([Value]) FOR [Name] IN ([File # ])) AS pvt  
+) e on  t.[CustId] = e.[CustId]

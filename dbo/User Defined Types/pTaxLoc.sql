@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pTaxLoc]
+    FROM VARCHAR (10) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pTaxLoc] TO PUBLIC;
+

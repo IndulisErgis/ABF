@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pCustID]
+    FROM VARCHAR (10) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pCustID] TO PUBLIC;
+

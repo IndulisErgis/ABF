@@ -1,0 +1,67 @@
+﻿CREATE TABLE [dbo].[tblApTen99MMHeader] (
+    [Counter]          INT            IDENTITY (1, 1) NOT NULL,
+    [NumRecordsInput]  INT            CONSTRAINT [DF_tblApTen99MMHeader_NumRecordsInput] DEFAULT ((0)) NULL,
+    [NumRecordsOutput] INT            CONSTRAINT [DF_tblApTen99MMHeader_NumRecordsOutput] DEFAULT ((0)) NULL,
+    [OutputFile]       VARCHAR (255)  NULL,
+    [PaymentYear]      SMALLINT       NULL,
+    [PriorYear]        BIT            CONSTRAINT [DF_tblApTen99MMHeader_PriorYear] DEFAULT ((0)) NOT NULL,
+    [TinFed]           VARCHAR (15)   NULL,
+    [RunType]          SMALLINT       CONSTRAINT [DF_tblApTen99MMHeader_RunType] DEFAULT ((1)) NULL,
+    [RAC]              VARCHAR (2)    NULL,
+    [FgnCorpYN]        BIT            CONSTRAINT [DF_tblApTen99MMHeader_FgnCorpYN] DEFAULT ((0)) NOT NULL,
+    [TMName]           VARCHAR (40)   NULL,
+    [TMAddr1]          VARCHAR (40)   NULL,
+    [TMAddr2]          VARCHAR (40)   NULL,
+    [TMCity]           VARCHAR (30)   NULL,
+    [TMRegion]         VARCHAR (2)    NULL,
+    [TMPostalCode]     VARCHAR (9)    NULL,
+    [TMPhone]          VARCHAR (15)   NULL,
+    [TMExt]            VARCHAR (5)    NULL,
+    [ControlCode]      VARCHAR (5)    NULL,
+    [NameControl]      VARCHAR (4)    NULL,
+    [TAName]           VARCHAR (40)   NULL,
+    [TAAddr1]          VARCHAR (40)   NULL,
+    [TAAddr2]          VARCHAR (40)   NULL,
+    [TACity]           VARCHAR (30)   NULL,
+    [TARegion]         VARCHAR (2)    NULL,
+    [TAPostalCode]     VARCHAR (9)    NULL,
+    [TAPhone]          VARCHAR (15)   NULL,
+    [TAExt]            VARCHAR (5)    NULL,
+    [TName]            VARCHAR (40)   NULL,
+    [CName]            VARCHAR (40)   NULL,
+    [CAddr1]           VARCHAR (40)   NULL,
+    [CAddr2]           VARCHAR (40)   NULL,
+    [CCity]            VARCHAR (30)   NULL,
+    [CRegion]          VARCHAR (2)    NULL,
+    [CTIN]             VARCHAR (15)   NULL,
+    [CPostalCode]      VARCHAR (9)    NULL,
+    [CControlCode]     VARCHAR (5)    NULL,
+    [ContactName]      VARCHAR (40)   NULL,
+    [ContactPhone]     VARCHAR (15)   NULL,
+    [ContactExt]       VARCHAR (5)    NULL,
+    [ContactEmail]     [dbo].[pEmail] NULL,
+    [VIndicator]       CHAR (1)       NOT NULL,
+    [VName]            VARCHAR (40)   NULL,
+    [VAddress]         VARCHAR (40)   NULL,
+    [VCity]            VARCHAR (30)   NULL,
+    [VState]           VARCHAR (2)    NULL,
+    [VPostalCode]      VARCHAR (9)    NULL,
+    [VContactName]     VARCHAR (40)   NULL,
+    [VContactPhone]    VARCHAR (15)   NULL,
+    [VContactEmail]    [dbo].[pEmail] NULL,
+    [VContactExt]      VARCHAR (5)    NULL,
+    [VFgnCorpYN]       BIT            CONSTRAINT [DF_tblApTen99MMHeader_VFgnCorpYN] DEFAULT ((0)) NOT NULL,
+    [PayerFgnCorpYN]   BIT            CONSTRAINT [DF_tblApTen99MMHeader_PayerFgnCorpYN] DEFAULT ((0)) NOT NULL,
+    [ts]               ROWVERSION     NULL,
+    [FATCAFilingYn]    BIT            DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PK_tblApTen99MMHeader] PRIMARY KEY CLUSTERED ([Counter] ASC)
+);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Version', @value = '11.0.19137.3213', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblApTen99MMHeader';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Comment', @value = 'Build 19137', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblApTen99MMHeader';
+

@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[ALP_tmpJobCostSummaryCosAcct] (
+    [RptId]            VARCHAR (24)     NULL,
+    [UserId]           VARCHAR (50)     NULL,
+    [TicketItemId]     INT              NULL,
+    [ItemId]           VARCHAR (24)     NULL,
+    [WhseId]           VARCHAR (10)     NULL,
+    [TicketId]         INT              NULL,
+    [BranchId]         INT              NULL,
+    [DivId]            INT              NULL,
+    [DeptId]           INT              NULL,
+    [Branch]           VARCHAR (255)    NULL,
+    [SiteName]         VARCHAR (80)     NULL,
+    [PartCost]         DECIMAL (38, 17) NULL,
+    [PartOh]           NUMERIC (38, 6)  NULL,
+    [OtherCost]        DECIMAL (38, 17) NULL,
+    [OtherPartCost]    DECIMAL (38, 17) NULL,
+    [LaborCost]        FLOAT (53)       NULL,
+    [CommCost]         DECIMAL (38, 10) NULL,
+    [JobCost]          FLOAT (53)       NULL,
+    [LseYn]            BIT              NULL,
+    [CogsAcctFromWC]   VARCHAR (40)     NULL,
+    [CogsAcctFromItem] VARCHAR (40)     NULL,
+    [ErrMsg]           VARCHAR (1000)   NULL
+);
+

@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pAssetID]
+    FROM VARCHAR (15) NOT NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pAssetID] TO PUBLIC;
+

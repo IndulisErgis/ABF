@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[ALP_tblArAlpRecBillRunRecords] (
+    [RunRecordId]                INT             IDENTITY (1, 1) NOT NULL,
+    [RunId]                      INT             NOT NULL,
+    [CustId]                     [dbo].[pCustID] NOT NULL,
+    [InvoiceSiteId]              INT             NOT NULL,
+    [SiteId]                     INT             NOT NULL,
+    [MailSiteYn]                 BIT             DEFAULT ((0)) NOT NULL,
+    [UseInvcConsolidationSiteYn] BIT             DEFAULT ((0)) NOT NULL,
+    [RecBillId]                  INT             NOT NULL,
+    [RecBillServId]              INT             NOT NULL,
+    [RecBillServPriceId]         INT             NOT NULL,
+    [RecBillNextBillDate]        DATETIME        NOT NULL,
+    [ServiceStartDate]           DATETIME        NOT NULL,
+    [EndCycleDate]               DATETIME        NOT NULL,
+    [EndDate]                    DATETIME        NULL,
+    [RecBillServiceStatus]       VARCHAR (10)    NULL,
+    [SysId]                      INT             NOT NULL,
+    [Price]                      [dbo].[pDec]    NOT NULL,
+    [CycleUnits]                 INT             NULL,
+    [BillQty]                    [dbo].[pDec]    NULL,
+    [AlarmId]                    VARCHAR (36)    NULL,
+    [BillingPeriodStart]         DATETIME        NULL,
+    [BillingPeriodEnd]           DATETIME        NULL,
+    [ServiceStatus]              VARCHAR (1)     NULL,
+    [Comments]                   VARCHAR (256)   NULL
+);
+

@@ -1,0 +1,3 @@
+﻿CREATE ROLE [QM_Mgr]
+    AUTHORIZATION [dbo];
+

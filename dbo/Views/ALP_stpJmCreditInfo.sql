@@ -1,0 +1,2 @@
+﻿
+CREATE VIEW dbo.ALP_stpJmCreditInfo AS SELECT c.CustId, c.CreditStatus, c.CustName, c.LastPayDate, c.CurAmtDue, c.BalAge1, c.BalAge2, c.BalAge3, c.BalAge4, c.UnapplCredit, c.UnpaidFinch, c.CreditHold FROM dbo.ALP_tblArCust_view c

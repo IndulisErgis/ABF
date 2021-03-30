@@ -1,0 +1,2 @@
+﻿
+CREATE VIEW dbo.ALP_lkpJmResolutionId AS SELECT TOP 100 PERCENT ResolutionId, ResolutionCode, [Desc], [Action], PointFactor, InactiveYN FROM dbo.ALP_tblJmResolution WHERE (InactiveYN = 0) ORDER BY ResolutionCode

@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pLotNum]
+    FROM VARCHAR (16) NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pLotNum] TO PUBLIC;
+

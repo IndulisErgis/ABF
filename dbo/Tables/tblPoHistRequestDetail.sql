@@ -1,0 +1,66 @@
+﻿CREATE TABLE [dbo].[tblPoHistRequestDetail] (
+    [PostRun]               [dbo].[pPostRun]     NOT NULL,
+    [TransID]               [dbo].[pTransID]     NOT NULL,
+    [EntryNum]              INT                  NOT NULL,
+    [QtyOrd]                [dbo].[pDec]         DEFAULT ((0)) NULL,
+    [UnitCost]              [dbo].[pDec]         DEFAULT ((0)) NULL,
+    [UnitCostFgn]           [dbo].[pDec]         DEFAULT ((0)) NULL,
+    [ExtCost]               [dbo].[pDec]         DEFAULT ((0)) NULL,
+    [ExtCostFgn]            [dbo].[pDec]         DEFAULT ((0)) NULL,
+    [ItemId]                [dbo].[pItemID]      NULL,
+    [ItemType]              TINYINT              NULL,
+    [LocId]                 [dbo].[pLocID]       NULL,
+    [Descr]                 [dbo].[pDescription] NULL,
+    [UnitsBase]             [dbo].[pUom]         NULL,
+    [Units]                 [dbo].[pUom]         NULL,
+    [LineStatus]            TINYINT              NULL,
+    [GLDesc]                [dbo].[pGLDesc]      NULL,
+    [AddnlDescr]            TEXT                 NULL,
+    [TaxClass]              TINYINT              NULL,
+    [BinNum]                NVARCHAR (10)        NULL,
+    [ConversionFactor]      [dbo].[pDec]         NULL,
+    [LottedYN]              BIT                  NULL,
+    [InItemYN]              BIT                  NULL,
+    [ReqShipDate]           DATETIME             NULL,
+    [GLAcct]                [dbo].[pGlAcct]      NULL,
+    [GLAcctSales]           [dbo].[pGlAcct]      NULL,
+    [GLAcctWIP]             [dbo].[pGlAcct]      NULL,
+    [TransHistID]           NVARCHAR (10)        NULL,
+    [CustID]                [dbo].[pCustID]      NULL,
+    [ProjID]                NVARCHAR (10)        NULL,
+    [ProjName]              NVARCHAR (30)        NULL,
+    [PhaseId]               NVARCHAR (10)        NULL,
+    [PhaseName]             NVARCHAR (30)        NULL,
+    [TaskID]                NVARCHAR (10)        NULL,
+    [TaskName]              NVARCHAR (30)        NULL,
+    [UnitInc]               [dbo].[pDec]         DEFAULT ((0)) NULL,
+    [ExtInc]                [dbo].[pDec]         DEFAULT ((0)) NULL,
+    [ProjItemYn]            BIT                  NULL,
+    [QtySeqNum]             INT                  NULL,
+    [SourceType]            SMALLINT             NULL,
+    [LineNum]               INT                  NULL,
+    [LinkTransId]           [dbo].[pTransID]     NULL,
+    [Seq]                   INT                  NULL,
+    [ReleaseNum]            NVARCHAR (3)         NULL,
+    [ReqId]                 NVARCHAR (4)         NULL,
+    [LinkSeqNum]            INT                  NULL,
+    [LandedCostID]          NVARCHAR (10)        NULL,
+    [LineSeq]               INT                  NULL,
+    [TransHistIDLandedCost] NVARCHAR (10)        NULL,
+    [Type]                  TINYINT              NULL,
+    [ProjectDetailId]       INT                  NULL,
+    [ActivityId]            INT                  NULL,
+    [CF]                    XML                  NULL,
+    [GLAcctAccrual]         [dbo].[pGlAcct]      NULL,
+    [ExpReceiptDate]        DATETIME             NULL,
+    CONSTRAINT [PK_tblPoHistRequestDetail] PRIMARY KEY CLUSTERED ([PostRun] ASC, [TransID] ASC, [EntryNum] ASC)
+);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Version', @value = '11.0.19137.3213', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblPoHistRequestDetail';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Comment', @value = 'Build 19137', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblPoHistRequestDetail';
+

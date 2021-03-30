@@ -1,0 +1,93 @@
+﻿CREATE TABLE [dbo].[tblArTransHeader] (
+    [TransId]           [dbo].[pTransID]    NOT NULL,
+    [TransType]         SMALLINT            CONSTRAINT [DF__tblArTran__Trans__4439FE9D] DEFAULT (1) NULL,
+    [BatchId]           [dbo].[pBatchID]    CONSTRAINT [DF__tblArTran__Batch__452E22D6] DEFAULT ('######') NOT NULL,
+    [CustId]            [dbo].[pCustID]     NOT NULL,
+    [ShipToID]          [dbo].[pCustID]     NULL,
+    [ShipToName]        VARCHAR (30)        NULL,
+    [ShipToAddr1]       VARCHAR (30)        NULL,
+    [ShipToAddr2]       VARCHAR (60)        NULL,
+    [ShipToCity]        VARCHAR (30)        NULL,
+    [ShipToRegion]      VARCHAR (10)        NULL,
+    [ShipToCountry]     [dbo].[pCountry]    NULL,
+    [ShipToPostalCode]  VARCHAR (10)        NULL,
+    [ShipVia]           VARCHAR (20)        NULL,
+    [TermsCode]         [dbo].[pTermsCode]  NOT NULL,
+    [TaxableYN]         BIT                 CONSTRAINT [DF__tblArTran__Taxab__4622470F] DEFAULT (1) NULL,
+    [InvcNum]           [dbo].[pInvoiceNum] NULL,
+    [WhseId]            [dbo].[pLocID]      NULL,
+    [OrderDate]         DATETIME            NULL,
+    [ShipNum]           NVARCHAR (30)       NULL,
+    [ShipDate]          DATETIME            NULL,
+    [InvcDate]          DATETIME            CONSTRAINT [DF__tblArTran__InvcD__47166B48] DEFAULT (getdate()) NULL,
+    [Rep1Id]            [dbo].[pSalesRep]   NULL,
+    [Rep1Pct]           [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_Rep1Pct] DEFAULT (0) NULL,
+    [Rep2Id]            [dbo].[pSalesRep]   NULL,
+    [Rep2Pct]           [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_Rep2Pct] DEFAULT (0) NULL,
+    [TaxOnFreight]      BIT                 CONSTRAINT [DF__tblArTran__TaxOn__49F2D7F3] DEFAULT (1) NULL,
+    [TaxClassFreight]   TINYINT             CONSTRAINT [DF__tblArTran__TaxCl__4AE6FC2C] DEFAULT (0) NULL,
+    [TaxClassMisc]      TINYINT             CONSTRAINT [DF__tblArTran__TaxCl__4BDB2065] DEFAULT (0) NULL,
+    [PostDate]          DATETIME            NULL,
+    [GLPeriod]          SMALLINT            CONSTRAINT [DF__tblArTran__GLPer__4CCF449E] DEFAULT (0) NULL,
+    [FiscalYear]        SMALLINT            CONSTRAINT [DF__tblArTran__Fisca__4DC368D7] DEFAULT (0) NULL,
+    [TaxGrpID]          [dbo].[pTaxLoc]     NOT NULL,
+    [TaxSubtotal]       [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_TaxSubtotal] DEFAULT (0) NULL,
+    [NonTaxSubtotal]    [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_NonTaxSubtotal] DEFAULT (0) NULL,
+    [SalesTax]          [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_SalesTax] DEFAULT (0) NULL,
+    [Freight]           [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_Freight] DEFAULT (0) NULL,
+    [Misc]              [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_Misc] DEFAULT (0) NULL,
+    [TotCost]           [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_TotCost] DEFAULT (0) NULL,
+    [TaxSubtotalFgn]    [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_TaxSubtotalFgn] DEFAULT (0) NULL,
+    [NonTaxSubtotalFgn] [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_NonTaxSubtotalFgn] DEFAULT (0) NULL,
+    [SalesTaxFgn]       [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_SalesTaxFgn] DEFAULT (0) NULL,
+    [FreightFgn]        [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_FreightFgn] DEFAULT (0) NULL,
+    [MiscFgn]           [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_MiscFgn] DEFAULT (0) NULL,
+    [TotCostFgn]        [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_TotCostFgn] DEFAULT (0) NULL,
+    [PrintStatus]       TINYINT             CONSTRAINT [DF__tblArTran__Print__5C11882E] DEFAULT (0) NULL,
+    [CustPONum]         VARCHAR (25)        NULL,
+    [DistCode]          [dbo].[pDistCode]   NOT NULL,
+    [CurrencyID]        [dbo].[pCurrency]   NOT NULL,
+    [ExchRate]          [dbo].[pDec]        CONSTRAINT [DF__tblArTran__ExchR__5D05AC67] DEFAULT (1) NULL,
+    [DiscDueDate]       DATETIME            NULL,
+    [NetDueDate]        DATETIME            NULL,
+    [DiscAmt]           [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_DiscAmt] DEFAULT (0) NULL,
+    [SumHistPeriod]     SMALLINT            CONSTRAINT [DF__tblArTran__SumHi__5EEDF4D9] DEFAULT (1) NULL,
+    [TaxAmtAdj]         [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_TaxAmtAdj] DEFAULT (0) NULL,
+    [TaxAmtAdjFgn]      [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_TaxAmtAdjFgn] DEFAULT (0) NULL,
+    [TaxAdj]            TINYINT             CONSTRAINT [DF__tblArTran__TaxAd__61CA6184] DEFAULT (1) NULL,
+    [TaxLocAdj]         [dbo].[pTaxLoc]     NULL,
+    [TaxClassAdj]       TINYINT             CONSTRAINT [DF__tblArTran__TaxCl__62BE85BD] DEFAULT (0) NULL,
+    [BillingPeriodFrom] DATETIME            NULL,
+    [PMTransType]       VARCHAR (4)         NULL,
+    [ProjItem]          VARCHAR (4)         NULL,
+    [BillingPeriodThru] DATETIME            NULL,
+    [BillingFormat]     SMALLINT            NULL,
+    [ts]                ROWVERSION          NULL,
+    [OrgInvcNum]        [dbo].[pInvoiceNum] NULL,
+    [OrgInvcExchRate]   [dbo].[pDec]        DEFAULT ((1)) NULL,
+    [CalcGainLoss]      [dbo].[pDec]        DEFAULT ((0)) NULL,
+    [DiscAmtFgn]        [dbo].[pDec]        CONSTRAINT [DF_tblArTransHeader_DiscAmtFgn] DEFAULT ((0)) NULL,
+    [Rep1CommRate]      [dbo].[pDec]        DEFAULT ((0)) NULL,
+    [Rep2CommRate]      [dbo].[pDec]        DEFAULT ((0)) NULL,
+    [CRFromHist]        BIT                 DEFAULT ((0)) NULL,
+    [VoidYn]            BIT                 CONSTRAINT [DF_tblArTransHeader_VoidYn] DEFAULT ((0)) NOT NULL,
+    [CF]                XML                 NULL,
+    [SourceId]          UNIQUEIDENTIFIER    NOT NULL,
+    [ShipToAttn]        NVARCHAR (30)       NULL,
+    [ShipMethod]        NVARCHAR (6)        NULL,
+    CONSTRAINT [PK_tblArTransHeader] PRIMARY KEY CLUSTERED ([TransId] ASC)
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [sqlBatchId]
+    ON [dbo].[tblArTransHeader]([BatchId] ASC);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Version', @value = '11.0.19137.3213', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblArTransHeader';
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'Comment', @value = 'Build 19137', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'tblArTransHeader';
+

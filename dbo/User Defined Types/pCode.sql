@@ -1,0 +1,8 @@
+﻿CREATE TYPE [dbo].[pCode]
+    FROM VARCHAR (3) NULL;
+
+
+GO
+GRANT REFERENCES
+    ON TYPE::[dbo].[pCode] TO PUBLIC;
+
